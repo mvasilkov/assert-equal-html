@@ -1,0 +1,35 @@
+{
+  "name": "assert-equal-html",
+  "version": "0.0.1",
+  "description": "Assert the equality of two HTML fragments",
+  "main": "javascript/assert_equal.js",
+  "types": "javascript/assert_equal.d.ts",
+  "files": [
+    "javascript"
+  ],
+  "scripts": {
+    "test": "smol test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mvasilkov/assert-equal-html.git"
+  },
+  "keywords": [
+    "assert",
+    "equal",
+    "html"
+  ],
+  "author": "Mark Vasilkov (https://github.com/mvasilkov)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mvasilkov/assert-equal-html/issues"
+  },
+  "homepage": "https://github.com/mvasilkov/assert-equal-html#readme",
+  "devDependencies": {
+    "@types/parse5-sax-parser": "*",
+    "smoltest": "*"
+  },
+  "dependencies": {
+    "parse5-sax-parser": "^6.0.0"
+  }
+}
