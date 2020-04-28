@@ -21,7 +21,7 @@ export async function assertNotEqual(actual: string, expected: string, error?: s
 
 export function normalize(a: string): Promise<string> {
     return new Promise(resolve => {
-        const str = new Readable({ encoding: 'utf8' })
+        const str = new Readable({ encoding: 'utf8', highWaterMark: 0 })
         str.push(a)
         str.push(null)
 

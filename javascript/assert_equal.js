@@ -34,7 +34,7 @@ function assertNotEqual(actual, expected, error) {
 exports.assertNotEqual = assertNotEqual;
 function normalize(a) {
     return new Promise(resolve => {
-        const str = new stream_1.Readable({ encoding: 'utf8' });
+        const str = new stream_1.Readable({ encoding: 'utf8', highWaterMark: 0 });
         str.push(a);
         str.push(null);
         const parser = new parse5_sax_parser_1.default;
