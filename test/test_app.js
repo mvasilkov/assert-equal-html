@@ -52,6 +52,29 @@ describe('Sanity', () => {
         })
     })
 
+    describe('Self-Closing Tags', () => {
+        it('Identity', () => {
+            assertEqual('<input />', '<input />')
+            assertEqual('<input>', '<input>')
+            assertEqual('<input />', '<input>')
+            assertEqual('<input>', '<input />')
+            assertNotEqual('<input />', '<input></input>')
+            assertNotEqual('<input>', '<link>')
+        })
+
+        it('Spaces', () => {
+            assertEqual('<input />', '<input/>')
+            assertEqual('<input/>', '<input />')
+            assertEqual('  <input  />  ', '<input />')
+            assertEqual('<input />', '  <input  />  ')
+        })
+
+        it('Trailing Text', () => {
+            assertEqual('утречко<input>волночки', 'утречко<input />волночки')
+            assertEqual('утречко<input />волночки', 'утречко<input>волночки')
+        })
+    })
+
     describe('Attributes', () => {
         it('Identity', () => {
             assertEqual('<p autocapitalize></p>', '<p autocapitalize></p>')
@@ -67,6 +90,8 @@ describe('Sanity', () => {
         it('Ordering', () => {
             assertEqual('<p lang="ru" autocapitalize></p>',
                 '<p autocapitalize lang="ru"></p>')
+            assertNotEqual('<input tabindex="2" tabindex="1">',
+                '<input tabindex="1" tabindex="2">')
         })
     })
 

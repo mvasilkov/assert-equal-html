@@ -4,6 +4,9 @@ import SAXParser from 'parse5-sax-parser'
 
 import { escapeAttr, escapeText } from './util'
 
+const voidElements = new Set(['area', 'base', 'br', 'col', 'embed', 'hr',
+    'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'])
+
 type InitParser = {
     parser: SAXParser
     getResult: () => string
@@ -37,7 +40,9 @@ export function initParser(): InitParser {
                 value = stripCollapse(value).split(' ').sort().join(' ')
             return `${name}="${escapeAttr(value)}"`
         }).join(' ')
-        result.push(`<${tagName}${a ? ' ' : ''}${a}${selfClosing ? ' /' : ''}>`)
+
+        const end = selfClosing || voidElements.has(tagName) ? ' /' : ''
+        result.push(`<${tagName}${a ? ' ' : ''}${a}${end}>`)
     })
 
     parser.on('endTag', ({ tagName }) => {
@@ -72,8 +77,8 @@ export function prettyPrint(lines: string[]) {
     let n = 0
 
     lines.forEach(str => {
-        if (str.startsWith('</')) indentation.push(--n)
-        else if (str.startsWith('<')) indentation.push(n++)
+        if (str.startsWith('</') && n != 0) indentation.push(--n)
+        else if (str.startsWith('<') && !str.endsWith('/>')) indentation.push(n++)
         else indentation.push(n)
     })
 

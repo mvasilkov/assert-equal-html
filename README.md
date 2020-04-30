@@ -21,7 +21,7 @@ Usage
 ```javascript
 const { assertEqual } = require('assert-equal-html')
 
-await assertEqual(
+assertEqual(
     '<button type="button" class="btn btn-link">Link</button>',
     '<button class="btn-link btn" type="button">Link</button>')
 ```
