@@ -18,21 +18,21 @@ const parse5_sax_parser_1 = __importDefault(require("parse5-sax-parser"));
 const util_1 = require("./util");
 function assertEqual(actual, expected, error) {
     return __awaiter(this, void 0, void 0, function* () {
-        actual = yield normalize(actual);
-        expected = yield normalize(expected);
+        actual = yield normalizeA(actual);
+        expected = yield normalizeA(expected);
         assert_1.strict.strictEqual(actual, expected, error);
     });
 }
 exports.assertEqual = assertEqual;
 function assertNotEqual(actual, expected, error) {
     return __awaiter(this, void 0, void 0, function* () {
-        actual = yield normalize(actual);
-        expected = yield normalize(expected);
+        actual = yield normalizeA(actual);
+        expected = yield normalizeA(expected);
         assert_1.strict.notStrictEqual(actual, expected, error);
     });
 }
 exports.assertNotEqual = assertNotEqual;
-function normalize(a) {
+function normalizeA(a) {
     return new Promise(resolve => {
         const str = new stream_1.Readable({ encoding: 'utf8', highWaterMark: 0 });
         str.push(a);
@@ -82,7 +82,7 @@ function normalize(a) {
         str.pipe(parser);
     });
 }
-exports.normalize = normalize;
+exports.normalizeA = normalizeA;
 function stripCollapse(a) {
     a = a.replace(/[\u0009\u000A\u000C\u000D\u0020]{1,}/g, ' ');
     const start = +a.startsWith(' ');

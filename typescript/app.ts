@@ -8,18 +8,18 @@ import SAXParser from 'parse5-sax-parser'
 import { escapeAttr, escapeText } from './util'
 
 export async function assertEqual(actual: string, expected: string, error?: string) {
-    actual = await normalize(actual)
-    expected = await normalize(expected)
+    actual = await normalizeA(actual)
+    expected = await normalizeA(expected)
     assert.strictEqual(actual, expected, error)
 }
 
 export async function assertNotEqual(actual: string, expected: string, error?: string) {
-    actual = await normalize(actual)
-    expected = await normalize(expected)
+    actual = await normalizeA(actual)
+    expected = await normalizeA(expected)
     assert.notStrictEqual(actual, expected, error)
 }
 
-export function normalize(a: string): Promise<string> {
+export function normalizeA(a: string): Promise<string> {
     return new Promise(resolve => {
         const str = new Readable({ encoding: 'utf8', highWaterMark: 0 })
         str.push(a)
