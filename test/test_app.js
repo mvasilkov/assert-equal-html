@@ -27,6 +27,11 @@ describe('Sanity', () => {
             assertEqual('  утречко  ', 'утречко')
             assertEqual('утречко', '  утречко  ')
         })
+
+        it('Case Folding', () => {
+            assertNotEqual('УТРЕЧКО', 'утречко')
+            assertNotEqual('утречко', 'УТРЕЧКО')
+        })
     })
 
     describe('HTML', () => {
@@ -44,6 +49,13 @@ describe('Sanity', () => {
         it('Spaces', () => {
             assertEqual('  <p>  волночки  </p>  ', '<p>волночки</p>')
             assertEqual('<p>волночки</p>', '  <p>  волночки  </p>  ')
+        })
+
+        it('Case Folding', () => {
+            assertEqual('<P>волночки</P>', '<p>волночки</p>')
+            assertEqual('<p>волночки</p>', '<P>волночки</P>')
+            assertNotEqual('<p>ВОЛНОЧКИ</p>', '<p>волночки</p>')
+            assertNotEqual('<p>волночки</p>', '<p>ВОЛНОЧКИ</p>')
         })
 
         it('Trailing Text', () => {
@@ -69,6 +81,13 @@ describe('Sanity', () => {
             assertEqual('<input />', '  <input  />  ')
         })
 
+        it('Case Folding', () => {
+            assertEqual('<INPUT />', '<input />')
+            assertEqual('<input />', '<INPUT />')
+            assertEqual('<INPUT>', '<input>')
+            assertEqual('<input>', '<INPUT>')
+        })
+
         it('Trailing Text', () => {
             assertEqual('утречко<input>волночки', 'утречко<input />волночки')
             assertEqual('утречко<input />волночки', 'утречко<input>волночки')
@@ -85,6 +104,18 @@ describe('Sanity', () => {
         it('Empty', () => {
             assertNotEqual('<p lang="ru"></p>', '<p lang=""></p>')
             assertNotEqual('<p lang=""></p>', '<p lang="ru"></p>')
+        })
+
+        it('Spaces', () => {
+            assertNotEqual('<p lang="  ru  "></p>', '<p lang="ru"></p>')
+            assertNotEqual('<p lang="ru"></p>', '<p lang="  ru  "></p>')
+        })
+
+        it('Case Folding', () => {
+            assertEqual('<p LANG="ru"></p>', '<p lang="ru"></p>')
+            assertEqual('<p lang="ru"></p>', '<p LANG="ru"></p>')
+            assertNotEqual('<p lang="RU"></p>', '<p lang="ru"></p>')
+            assertNotEqual('<p lang="ru"></p>', '<p lang="RU"></p>')
         })
 
         it('Ordering', () => {
@@ -109,6 +140,11 @@ describe('Sanity', () => {
         it('Spaces', () => {
             assertEqual('<p class="  working  "></p>', '<p class="working"></p>')
             assertEqual('<p class="working"></p>', '<p class="  working  "></p>')
+        })
+
+        it('Case Folding', () => {
+            assertNotEqual('<p class="WORKING"></p>', '<p class="working"></p>')
+            assertNotEqual('<p class="working"></p>', '<p class="WORKING"></p>')
         })
 
         it('Ordering', () => {
