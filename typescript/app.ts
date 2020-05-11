@@ -5,13 +5,13 @@ import { Readable, finished } from 'stream'
 
 import { initParser } from './parser'
 
-export function assertEqual(actual: string, expected: string, error?: string) {
+export function assertEqual(actual: string, expected: string, error?: string | Error) {
     actual = normalize(actual)
     expected = normalize(expected)
     assert.strictEqual(actual, expected, error)
 }
 
-export function assertNotEqual(actual: string, expected: string, error?: string) {
+export function assertNotEqual(actual: string, expected: string, error?: string | Error) {
     actual = normalize(actual)
     expected = normalize(expected)
     assert.notStrictEqual(actual, expected, error)

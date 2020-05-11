@@ -1,6 +1,6 @@
 {
   "name": "assert-equal-html",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Assert the equality of two HTML fragments",
   "main": "javascript/app.js",
   "types": "javascript/app.d.ts",

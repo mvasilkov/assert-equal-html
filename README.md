@@ -45,8 +45,13 @@ The comparison rules are as follows:
 Syntax
 ---
 
-`assertEqual(actual, expected[, message])`
-`assertNotEqual(actual, expected[, message])`
+**`assertEqual(actual, expected[, message])`**
+
+Tests HTML equality between the `actual` and `expected` parameters.
+
+**`assertNotEqual(actual, expected[, message])`**
+
+Tests HTML inequality between the `actual` and `expected` parameters.
 
 License
 ---
