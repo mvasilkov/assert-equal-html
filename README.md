@@ -60,5 +60,5 @@ MIT
 
 [npm-badge]: https://img.shields.io/npm/v/assert-equal-html.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/assert-equal-html
-[dependencies-badge]: https://img.shields.io/david/mvasilkov/assert-equal-html?style=flat
+[dependencies-badge]: https://img.shields.io/librariesio/release/npm/assert-equal-html?style=flat
 [dependencies-url]: https://www.npmjs.com/package/assert-equal-html?activeTab=dependencies
